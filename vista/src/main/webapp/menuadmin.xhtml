@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Examen 1</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            .full-height {
+                height: 100%;
+            }
+            .custom-panel {
+                width: 220px; /* Ajustado para hacer el panel un poco más ancho */
+                margin-left: 15px;
+            }
+            .panel-heading {
+                background-color: white !important;
+                border-bottom: none;
+
+            }
+
+            .btn-custom {
+                margin-top: 20px;
+                margin-left: -16px;
+                border-left: 10px solid #767676; /* Ajusta este valor al tamaño deseado para el segundo color */
+                background-color: #f0f0f0; /* Gris más claro */
+                color: #767676; /*color letra*/
+                font-size: 12px; /* Reducido para mejorar el ajuste del texto */
+                white-space: normal; /* Permite que el texto ocupe más de una línea si es necesario */
+                word-wrap: break-word; /* Asegura que el texto se ajuste dentro del botón */
+                height: 35px; /* Ajusta la altura del botón */
+                width: 220px; /* Permite que el ancho se ajuste al contenido, puedes especificar un ancho fijo si prefieres */
+                margin-bottom: 12px; /* Aumenta el espacio entre los botones */
+            }
+
+            .text-next-to-image {
+                position: absolute; /* Posicionamiento absoluto */
+                left: calc(220px + 100px); /* Ajusta este valor según el ancho de tu imagen */
+                top: 20px; /* Ajusta esta altura para alinear con la imagen */
+                color: #00733f; /* Color del texto en verde */
+                font-size: 12px; /* Tamaño del texto */
+                z-index: 2; /* Asegura que el texto esté sobre la línea naranja */
+                margin-left: 35px;
+            }
+
+
+
+            .orange-line {
+                background-color: orange; /* El color de la línea */
+                height: 25px; /* El grosor de la línea */
+                position: absolute; /* Posición absoluta para sacarla del flujo normal */
+                left: 220px; /* Alineado al final del panel. Ajusta según el ancho real de tu panel */
+                right: 0; /* Alinea hasta el extremo derecho de la página */
+                top: 55px; /* Ajusta esta altura para alinear con la parte inferior del panel-heading */
+                z-index: -1; /* Asegura que no se superponga a otros elementos */
+            }
+
+
+
+            .image-above-orange-line img {  
+                display: block; /* Asegura que la imagen no tenga espacio extra alrededor */
+                width: 80px; /* O un valor fijo si prefieres un ancho específico */
+                height: 60px; /* O un valor fijo si prefieres una altura específica */
+                position: absolute; /* Posicionamiento absoluto */
+                left: 220px; /* Alineado al final del panel. Ajusta según el ancho real de tu panel */
+                top: 3px; /* Ajusta esta altura para alinear con la parte superior de la línea naranja */
+                z-index: 1; /* Asegura que la imagen esté sobre la línea naranja */
+                margin-left: 25px;
+
+            }
+
+
+            .boton-singin{
+                position: absolute;
+                top: 20px;
+                margin-left: 1200px;
+                background: transparent;
+                border: none;
+                color: #00733f;
+            }
+
+
+            /*estilo de alta profesor*/
+            
+            .panel-grid-custom {
+    display: flex;
+    justify-content: center; /* Centra los elementos de manera horizontal */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no hay suficiente espacio */
+}
+
+            .dialog-form-container {
+                margin: 10px;
+                border: 5px solid #00733f; /* Verde oscuro */
+                padding: 20px;
+                border-radius: 5px; /* Bordes redondeados (opcional) */
+            }
+
+            .panel-grid-custom .columnClass {
+                padding: 10px;
+            }
+
+            .input-field {
+                width: 100%;
+                margin-top: 5px;
+                margin-bottom: 15px;
+            }
+
+            .register-btn {
+                width: auto; 
+                padding: 10px;
+                background-color: #FFC107;
+                border: none;
+                color: white;
+                margin-top: 20px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            /*Estilos para el dialog*/
+            .ui-panelgrid .ui-panelgrid-cell {
+                border: none !important; /* Elimina los bordes entre celdas */
+                box-shadow: none !important; /* Elimina las sombras internas si las hay */
+            }
+
+            .ui-panelgrid .ui-widget-content {
+                border: none !important; /* Elimina los bordes del contenido del widget si los hay */
+            }
+
+            .ui-autocomplete-dropdown {
+                display: none !important;
+            }
+
+            .ui-dialog{
+
+                box-shadow: none !important; /* Elimina la sombra */
+                border: none !important; /* Elimina el borde */
+                width: 1000px !important;
+                height: 500px !important;
+                top: 80px !important;
+                left: 250px !important;
+            }
+            .ui-dialog-titlebar{
+                background: transparent !important; /* Hace el fondo del título transparente */
+                border: none !important; /* Elimina cualquier borde que pueda tener */
+                margin-left: 380px !important;
+                top: 20px;
+                margin-bottom: 20px;
+
+            }
+
+      
+        </style>
+
+    </h:head>
+
+    <h:body>
+        <div class="row full-height">            <div class="custom-panel full-height">
+                <!-- Panel que contiene los botones -->
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <img src="resources/uabcMenu.png" alt="Menú" style="width: 100%;"/> <!-- Reemplaza tu-imagen-aqui.jpg con tu URL de imagen -->
+                    </div>  
+
+                    <div class="panel-body">
+                        <h:form>
+                            <p:commandButton value="Añadir Docente" onclick="PF('dlgAltaProfesor').show(); PF('dlgAltaUnidadAprendizaje').hide(); PF('dlgConsultaGeneral').hide(); PF('dlgModificarProfesor').hide(); PF('dlgEliminarProfesor').hide(); PF('dlgAsignarUnidades').hide(); return false" styleClass="btn-custom btn-block" />
+
+                            <p:commandButton value="Unidad de Aprendizaje" onclick="PF('dlgAltaUnidadAprendizaje').show(); PF('dlgAltaProfesor').hide(); PF('dlgConsultaGeneral').hide(); PF('dlgModificarProfesor').hide(); PF('dlgEliminarProfesor').hide(); PF('dlgAsignarUnidades').hide(); return false;" styleClass="btn-custom btn-block" />
+
+                            <p:commandButton value="Consulta general" onclick="PF('dlgConsultaGeneral').show(); PF('dlgAltaProfesor').hide(); PF('dlgAltaUnidadAprendizaje').hide(); PF('dlgModificarProfesor').hide(); PF('dlgEliminarProfesor').hide(); PF('dlgAsignarUnidades').hide(); return false;" styleClass="btn-custom btn-block" />
+
+                            <p:commandButton value="Modificación Docente" onclick="PF('dlgModificarProfesor').show(); PF('dlgAltaProfesor').hide(); PF('dlgAltaUnidadAprendizaje').hide(); PF('dlgConsultaGeneral').hide(); PF('dlgEliminarProfesor').hide(); PF('dlgAsignarUnidades').hide(); return false;" styleClass="btn-custom btn-block" />
+
+                            <p:commandButton value="Eliminar Profesor"  onclick="PF('dlgEliminarProfesor').show(); PF('dlgAltaProfesor').hide(); PF('dlgAltaUnidadAprendizaje').hide(); PF('dlgModificarProfesor').hide(); PF('dlgConsultaGeneral').hide(); PF('dlgAsignarUnidades').hide();  return false;" styleClass="btn-custom btn-block" />
+
+                            <p:commandButton value="Asignación de Unidades" onclick="PF('dlgAsignarUnidades').show(); PF('dlgAltaProfesor').hide(); PF('dlgAltaUnidadAprendizaje').hide(); PF('dlgModificarProfesor').hide(); PF('dlgEliminarProfesor').hide(); PF('dlgConsultaGeneral').hide(); return false;" styleClass="btn-custom btn-block" />
+                            
+                        </h:form>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Diálogo para el formulario de alta de profesor -->
+            <p:dialog header="Registro de docente" widgetVar="dlgAltaProfesor" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false">
+                <h:form id="formAltaProfesor" styleClass="dialog-form-container">
+
+                    <p:panelGrid columns="2" columnClasses="columnClass,columnClass" styleClass="panel-grid-custom">
+                        <p:column>
+                            <p:outputLabel for="nombre" value="Nombre"/>
+                            <p:inputText id="nombre" required="true" placeholder="Nombre" styleClass="input-field" value="#{profesorUI.profesores.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel for="apellido" value="Apellidos"/>
+                            <p:inputText id="apellido" required="true" placeholder="Apellidos" styleClass="input-field" value="#{profesorUI.profesores.apellido}"/>
+                        </p:column>
+
+                        <p:row>
+                            <p:column>
+
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel for="rfc" value="RFC"/>
+                                <p:inputText id="rfc" required="true" placeholder="RFC" styleClass="input-field" value="#{profesorUI.profesores.rfc}"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton style="background:#ffa500; color:#f0f0f0; border-radius: 4px;" value="Registrar" styleClass="register-btn" update="@form, messages" actionListener="#{profesorUI.registrarProfesor()}"/>
+                    <p:growl id="messages" showDetail="true" life="3000"/>
+                </h:form>
+            </p:dialog>
+
+
+            <!-- Diálogo para el formulario de alta de unidad de aprendizaje -->
+            <p:dialog header="Alta de unidad de aprendizaje" widgetVar="dlgAltaUnidadAprendizaje" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false">
+                <h:form id="formAltaUnidadAprendizaje" styleClass="dialog-form-container">
+                    <p:panelGrid columns="2" columnClasses="columnClass,columnClass" styleClass="panel-grid-custom">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="nombreUnidad" value="Nombre de la Unidad"/>
+                                <p:inputText id="nombreUnidad" required="true" placeholder="Nombre de la Unidad" styleClass="input-field" value="#{unidadUI.unidadesAcademicas.nombreUnidadAprendizaje}"    />
+                            </p:column>
+                            <p:outputLabel for="horasLaboratorio" value="Horas Laboratorio"/>
+                            <p:inputText id="horasLaboratorio" type="number" required="true" placeholder="Horas Laboratorio" styleClass="input-field" value="#{unidadUI.unidadesAcademicas.horasLaboratorio}"/>
+                            <p:column>
+
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="horasClase" value="Horas Clase"/>
+                                <p:inputText id="horasClase" type="number" required="true" placeholder="Horas Clase" styleClass="input-field" value="#{unidadUI.unidadesAcademicas.horasClase}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel for="horasTaller" value="Horas Taller"/>
+                                <p:inputText id="horasTaller" type="number" required="true" placeholder="Horas Taller" styleClass="input-field" value="#{unidadUI.unidadesAcademicas.horasTaller}"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton style="background:#ffa500; color:#f0f0f0; border-radius: 4px;" value="Registrar Unidad" styleClass="register-btn" update="@form, messagesUnidad" actionListener="#{unidadUI.save()}"/>
+                    <p:growl id="messagesUnidad" showDetail="true" life="3000"/>
+                </h:form>
+            </p:dialog>
+
+
+            <!-- Diálogo para la conulta genereal de docentes-->
+            <p:dialog header="Consulta General de Profesores" widgetVar="dlgConsultaGeneral" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false"
+                      styleClass="dialogoonsulta">
+
+                <h:form id="formConsultaGeneral" style="width: 1000px !important;">
+                    <p:dataTable var="profesor" value="#{profesorUI.cargarProfesores()}" styleClass="tabla-consulta-general"
+                                 paginator="true" rows="10" sortBy="#{profesor.nombre}"
+                                 scrollable="true" scrollHeight="200" scrollWidth="1000" >
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{profesor.nombre}" />
+                        </p:column>
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{profesor.apellido}" />
+                        </p:column>
+                        <p:column headerText="Id Docente">
+                            <h:outputText value="#{profesor.idProfesor}" />
+                        </p:column>
+                        <p:column headerText="RFC">
+                            <h:outputText value="#{profesor.rfc}" />
+                        </p:column>
+                        <p:column headerText="Unidades de Aprendizaje Asignadas">
+                            <p:dataTable var="unidad" value="#{profesor.unidadesAcademicasList}" styleClass="table">
+                                <p:column headerText="ID Unidad">
+                                    <h:outputText value="#{unidad.idUnidadAprendizaje}" />
+                                </p:column>
+                                <p:column headerText="Nombre Unidad">
+                                    <h:outputText value="#{unidad.nombreUnidadAprendizaje}" />
+                                </p:column>
+                                <!-- Puedes añadir más columnas para horas de clase, taller, etc., si es necesario -->
+                            </p:dataTable>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:dialog>
+
+
+            <!-- Diálogo para la modificacion docentes-->
+            <p:dialog header="Modificar Asignación de Profesor" widgetVar="dlgModificarProfesor" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false" >
+              
+                <h:form id="formModificarProfesor">
+        <!-- Campo de texto para buscar unidad de aprendizaje -->
+       <p:outputLabel for="selectUnidadAprendizaje" value="Unidad de Aprendizaje" />
+<p:selectOneMenu id="selectUnidadAprendizaje" value="#{profesorUI.idUnidadAprendizajeSeleccionada}" >
+    <f:selectItem itemLabel="Seleccione una Unidad" itemValue="" noSelectionOption="true"/>
+    <f:selectItems value="#{profesorUI.unidadesAprendizajeDisponibles}" 
+                   var="unidad" 
+                   itemLabel="#{unidad.nombreUnidadAprendizaje}" 
+                   itemValue="#{unidad.idUnidadAprendizaje}" />
+</p:selectOneMenu>
+<p:commandButton value="Buscar" actionListener="#{profesorUI.filtrarProfesoresPorUnidad}" update=":formModificarProfesor:tablaUnidades"/>
+
+
+        <!-- Tabla de profesores filtrados -->
+       <p:dataTable id="tablaUnidades" var="profesor" value="#{profesorUI.profesoresFiltrados}" 
+             emptyMessage="No se encontraron profesores para esta unidad de aprendizaje" 
+             styleClass="ui-datatable-custom">
+            <p:column headerText="Nombre">
+                <h:outputText value="#{profesor.nombre}" />
+            </p:column>
+            <p:column headerText="Apellido">
+                <h:outputText value="#{profesor.apellido}" />
+            </p:column>
+            <p:column headerText="ID Docente">
+                <h:outputText value="#{profesor.idProfesor}" />
+            </p:column>
+            <p:column headerText="RFC">
+                <h:outputText value="#{profesor.rfc}" />
+            </p:column>
+            <p:column headerText="Eliminar">
+                <p:commandButton value="Eliminar" actionListener="#{profesorUI.eliminarProfesorDeUnidad(profesor.idProfesor,unidad.idUnidadAprendizaje)}" 
+                         update=":formModificarProfesor:tablaUnidades"
+                         icon="ui-icon-delete" 
+                         title="Eliminar profesor">
+            <f:setPropertyActionListener value="#{profesor}" target="#{profesorUI.profesorSeleccionado}" />
+        </p:commandButton>
+    </p:column>
+        </p:dataTable>
+    </h:form>
+                
+            </p:dialog>
+
+
+            <!--Dialogo para eliminar docentes-->
+            <p:dialog header="Eliminar Profesor" widgetVar="dlgEliminarProfesor" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false">
+               
+                
+                <h:form id="formEliminarProfesor">
+                    <p:dataTable var="profesor" value="#{profesorUI.listaProfesores}" 
+                                 emptyMessage="No hay profesores para mostrar" 
+                                 styleClass="ui-datatable-custom" scrollable="true" >
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{profesor.nombre}" />
+                        </p:column>
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{profesor.apellido}" />
+                        </p:column>
+                        <p:column headerText="ID Docente">
+                            <h:outputText value="#{profesor.idProfesor}" />
+                        </p:column>
+                        <p:column headerText="RFC">
+                            <h:outputText value="#{profesor.rfc}" />
+                        </p:column>
+                       <p:column style="width:32px">
+   <h:commandButton value="Eliminar" actionListener="#{profesorUI.borrarProfe}">
+    <f:setPropertyActionListener target="#{profesorUI.profesorSeleccionado}" value="#{profesor}" />
+    <f:ajax render=":formEliminarProfesor" />
+</h:commandButton>
+
+</p:column>
+                        
+                        
+                    </p:dataTable>
+                </h:form>
+                
+            </p:dialog>
+
+            <!-- Diálogo para el formulario de asignacion de unidades -->
+            <p:dialog header="Asignación de Unidades de Aprendizaje" widgetVar="dlgAsignarUnidades" modal="false" draggable="false" resizable="false" 
+                      showHeader="true" minimizable="false" maximizable="false" closable="false">
+                <h:form id="formAsignarUnidades" styleClass="dialog-form-container">
+                    <p:panelGrid columns="2" columnClasses="columnClass,columnClass" styleClass="panel-grid-custom">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="profesor" value="Profesor"/>
+                                <p:autoComplete id="profesor" completeMethod="#{tuManagedBean.completeProfesor}" dropdown="true" styleClass="input-field"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="unidadAprendizaje" value="Unidad de Aprendizaje"/>
+                                <p:autoComplete id="unidadAprendizaje" completeMethod="#{tuManagedBean.completeUnidadAprendizaje}" dropdown="true" styleClass="input-field"/>
+
+                            </p:column>
+
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton style="background:#ffa500; color:#f0f0f0; border-radius: 4px;" value="Asignar" actionListener="#{tuManagedBean.asignarUnidadAprendizaje}" update=":formAsignarUnidades" styleClass="register-btn"/>
+                </h:form>
+            </p:dialog>
+
+
+            <div class="image-above-orange-line">
+                <img src="resources/ciad.png" alt="Descripción de la imagen" />
+            </div>
+            <div class="text-next-to-image">
+                UNIVERSIDAD AUTÓNOMA DE BAJA CALIFORNIA
+            </div>
+            <div class="orange-line"></div>
+
+            <div>
+                <h:form>
+                    <h:commandButton styleClass="boton-singin" value="Log out" action="#{profesorUI.logout()}" />
+                </h:form>
+            </div>
+            <!-- El resto de la página iría aquí -->
+        </div>
+    </h:body>
+</html>
